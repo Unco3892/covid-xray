@@ -38,7 +38,7 @@ All the data used for this project has been placed on this [drive](https://drive
   </tr>
   <tr>
     <td class="tg-i7a5">Large test set</td>
-    <td class="tg-3zvv">28</td>
+    <td class="tg-3zvv">42</td>
     <td class="tg-3zvv">1583</td>
     <td class="tg-3zvv">1494</td>
     <td class="tg-3zvv">2788</td>
