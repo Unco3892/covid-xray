@@ -24,17 +24,17 @@ All the data used for this project has been placed on this [drive](https://drive
 <tbody>
   <tr>
     <td class="tg-i7a5">Train set</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
+    <td class="tg-3zvv">164</td>
+    <td class="tg-3zvv">164</td>
+    <td class="tg-3zvv">164</td>
+    <td class="tg-3zvv">164</td>
   </tr>
   <tr>
     <td class="tg-i7a5">Small test set</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
+    <td class="tg-3zvv">42</td>
+    <td class="tg-3zvv">42</td>
+    <td class="tg-3zvv">42</td>
+    <td class="tg-3zvv">42</td>
   </tr>
   <tr>
     <td class="tg-i7a5">Large test set</td>
