@@ -1,6 +1,6 @@
 # Using Deep Learning to Identify COVID-19 Patients
 ## Authors: Ilia Azizi & Alexandre Schroeter
-## Presented to the [deep learning](https://irudnyts.github.io/deep/) course taught by [Dr.Iegor Rudnytsky](https://irudnyts.github.io)
+## Presented to the [deep learning](https://irudnyts.github.io/deep/) course taught by [Dr.Iegor Rudnytskyi](https://irudnyts.github.io)
 !!!LINK TO THE NEW DATA: https://drive.google.com/drive/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng?usp=sharing !!! </p>
 Welcome on our repo for the project of Deep Learning where we try to apply deep learning techniques on X-rays images to predict if a patient has been infected by COVID-19 or not. 
 
