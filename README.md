@@ -2,7 +2,7 @@
 ## Authors: Ilia Azizi & Alexandre Schroeter
 ## Presented to the [deep learning](https://irudnyts.github.io/deep/) course taught by [Dr.Iegor Rudnytskyi](https://irudnyts.github.io)
 !!!LINK TO THE NEW DATA (204): https://drive.google.com/drive/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng?usp=sharing !!! </p>
-140 photos cloned the mega.nz drive https://mega.nz/fm/Owg2CQjZ </p>
+140 photos cloned the mega.nz drive https://mega.nz/folder/ro5mRYDS#8S3h9WtnVs7QxP5XNim7JQ </p>
 Welcome on our repo for the project of Deep Learning where we try to apply deep learning techniques on X-rays images to predict if a patient has been infected by COVID-19 or not. 
 
 ## Objective
