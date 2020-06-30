@@ -10,8 +10,8 @@ The project focuses on identifying healthy individuals from those infected by CO
 
 ## Instructions: 
 
-1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray-deeplearn.git`
-2. Download data files from [Google Drive](XXX) and place them in the root folder of the project
+1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray-1.git`
+2. Download data files from [Google Drive](https://drive.google.com/drive/folders/128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h?usp=sharing) and place them in the root folder of the project
 
 ## Structure of the repo
 
