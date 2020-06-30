@@ -81,7 +81,7 @@ Up to now, only a fraction of the population has been tested, and even if testin
 
 ```{r, echo=FALSE, out.width = '100%', message = F, fig.cap = "Number of tests per thousand -@data_2020"}
 library(here)
-knitr::include_graphics(here("images/tests.png"))
+knitr::include_graphics(here("report/images/tests.png"))
 ```
 
 Even small countries like Iceland or Luxembourg have only been able to carry 100 tests per thousand inhabitants. 

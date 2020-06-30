@@ -1,15 +1,30 @@
-# Using Deep Learning to Identify COVID-19 Patients
-## Authors: Ilia Azizi & Alexandre Schroeter
-## Presented to the [deep learning](https://irudnyts.github.io/deep/) course taught by [Dr.Iegor Rudnytskyi](https://irudnyts.github.io)
-!!!LINK TO THE NEW DATA (204): https://drive.google.com/drive/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng?usp=sharing !!! </p>
-140 photos cloned the mega.nz drive https://mega.nz/folder/ro5mRYDS#8S3h9WtnVs7QxP5XNim7JQ </p>
-Welcome on our repo for the project of Deep Learning where we try to apply deep learning techniques on X-rays images to predict if a patient has been infected by COVID-19 or not. 
+# Indetifying COVID-19 Patients by X-rays: Part I
+# Ilia Azizi, Alexandre Schroeter
 
-## Objective
-This report has made focused on a binary classification task to identify healthy individuals from those infected by COVID-19, and also a multi-class classification where the task is to identify COVID19+ from healthy individuals or those infected with viral and bacterial pneumonia.
 
-## Structure
-### Dataset
+This repo contains all necessary files to reproduce results that can be found in our post on [Towards Data Science](XXX).
+
+## Summary
+
+The project focuses on identifying healthy individuals from those infected by COVID-19 (binary classification). Further, we dive deep by considering refined classes, namely, COVID-19, viral pneumonia, and bacterial pneumonia infected patients, and finally healthy individuals.
+
+## Instructions: 
+
+1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray-deeplearn.git`
+2. Download data files from [Google Drive](XXX) and place them in the root folder of the project
+
+## Structure of the repo
+
+### `data`
+
+### `report`
+
+### `runs`
+
+### `scripts`
+
+### Auxiliary files: `.gitignore`, `covid-xray-deeplearn.Rproj`, and `README.md`
+
 All the data used for this project has been placed on this [drive](https://drive.google.com/open?id=128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h). The structure of our datasets are in the following way:
 
 <center>
