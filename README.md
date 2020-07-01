@@ -11,17 +11,28 @@ The project focuses on identifying healthy individuals from those infected by CO
 ## Instructions: 
 
 1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray-1.git`
-2. Download data files from [Google Drive](https://drive.google.com/drive/folders/128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h?usp=sharing) and place them in the root folder of the project
+2. Download data files and saved models from [Google Drive](https://drive.google.com/drive/folders/128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h?usp=sharing) and place them in the root folder of the project
+3. Run the script `scripts/organize-images.R`
 
 ## Structure of the repo
 
-### `data`
-
 ### `report`
+
+This folder contains the R Markdown report and its knitted version. The references are listed in `ref.bibtex`. If you would like to re-knit the report, please make sure that you have downloaded `/models` and `/data` from Google Drive.
+
+### `scripts`
+
+This directory has three sub-folder, namely, `import-EDA`, `binary`, and `multiclass`. 
+
+### `data`
 
 ### `runs`
 
-### `scripts`
+### `models`
+
+### `results`
+
+The metrics based on test datasets are stored in this folder.
 
 ### Auxiliary files: `.gitignore`, `covid-xray-deeplearn.Rproj`, and `README.md`
 
