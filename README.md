@@ -1,4 +1,4 @@
-# Indetifying COVID-19 Patients by X-rays: Part I
+# Identifying COVID-19 Patients by X-rays: Part I
 # Ilia Azizi, Alexandre Schroeter
 
 
