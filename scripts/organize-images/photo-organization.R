@@ -138,8 +138,6 @@ for (i in 1: length(mainfolder_names)){
     ))
 }
 
-
-
 # !=======!
 # The same model as above can be applied below.
 
