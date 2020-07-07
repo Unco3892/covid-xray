@@ -34,7 +34,7 @@ This directory has three sub-folder, namely, `import-EDA`, `binary`, and `multic
 
 The metrics based on test datasets are stored in this folder.
 
-### Auxiliary files: `.gitignore`, `covid-xray-deeplearn.Rproj`, and `README.md`
+### Auxiliary files: `.gitignore`, `covid-xray.Rproj`, and `README.md`
 
 All the data used for this project has been placed on this [drive](https://drive.google.com/open?id=128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h). The structure of our datasets are in the following way:
 
