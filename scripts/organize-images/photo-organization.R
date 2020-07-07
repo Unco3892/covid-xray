@@ -2,6 +2,8 @@
 # PROCESSING IMAGES
 # =================
 
+# Run "eda.R" first in your enviroment.
+
 # --------------------
 # Creating the folders
 # --------------------
@@ -36,7 +38,6 @@ filestocopy_pos_test <- as.vector(only_covid$filename)[(split_prop+1):nrow(only_
 
 
 # !!!The code below could be shortened!!!
-
   # We write a loop to move the COVID+ photos to our chest-x-ray ones
 for (i in 1: length(mainfolder_names)){
   # Set both the directory to take the images as well as the target directory
@@ -73,23 +74,24 @@ for (i in 1: length(mainfolder_names)){
     ))
 }
 
-
-# !!!
-# Until here it is fine!
-
 # --------------------
 # COVID-
 # --------------------
-# Sampling Images from the kermany data for normal to have a balanced dataset
-# Set the original directory for the negative covid cases (labled NORMAL)
-org_dir_neg <- here::here("data/raw/kermany/images/train/NORMAL")
+# Here we will also create balanced dataset, however we will use all the images from the test and train in the processes.
 
-# Now list the files
-jpeg2 <- list.files(org_dir_negative, pattern = ".jpeg")
+# Set the original directory for the negative covid cases (labled NORMAL)
+# Note: Sampling Images from the kermany data for normal to have a balanced dataset
+org_dir_neg_train <- here::here("data/raw/kermany/images/train/NORMAL")
+org_dir_neg_test <- here::here("data/raw/kermany/images/test/NORMAL")
+
+# Here we have a particular situation as we have two training directories
+# Now list the training files in the original training directory
+jpeg2_train <- list.files(org_dir_neg_train, pattern = ".jpeg")
+jpeg2_test <- list.files(org_dir_neg_test, pattern = ".jpeg") # Now list the test files in the original training directory
 
 # We randomly take the same number photos as COVID+ and then divide them into train and test
 set.seed(5)
-all_negatives <- as.vector(sample(jpeg2, nrow(only_covid)))
+all_negatives <- as.vector(sample(jpeg2_train, nrow(only_covid)))
 filestocopy_neg_train <- all_negatives[1: split_prop]
 filestocopy_neg_test <- all_negatives[(split_prop+1):nrow(only_covid)]
 
@@ -102,31 +104,44 @@ for (i in 1: length(mainfolder_names)){
   # We copy the files for the train set (COVID+)
   lapply(filestocopy_pos_train, function(x)
     file.copy(
-      paste (org_dir_neg, x , sep = "/"),
+      paste (org_dir_neg_train, x , sep = "/"),
       paste (tar_dir_neg_train, x, sep = "/"),
       recursive = FALSE,
       copy.mode = TRUE,
       overwrite = TRUE
     ))
   # We copy the files for the small test set(COVID+)
-  lapply(filestocopy_neg_train, function(x)
+  lapply(filestocopy_neg_test, function(x)
     file.copy(
-      paste (org_dir_neg, x , sep = "/"),
+      paste (org_dir_neg_train, x , sep = "/"),
       paste (tar_dir_neg_small_test, x, sep = "/"),
       recursive = FALSE,
       copy.mode = TRUE,
       overwrite = TRUE
     ))
-  # We copy the files for the test set (COVID+)
-  lapply(filestocopy_neg_test, function(x)
+  lapply(jpeg2_train, function(x)
     file.copy(
-      paste (org_dir_neg, x , sep = "/"),
+      paste (org_dir_neg_train, x , sep = "/"),
+      paste (tar_dir_neg_large_test, x, sep = "/"),
+      recursive = FALSE,
+      copy.mode = TRUE,
+      overwrite = TRUE
+    ))
+  # We copy the files for the test set (COVID+)
+  lapply(jpeg2_test, function(x)
+    file.copy(
+      paste (org_dir_neg_test, x , sep = "/"),
       paste (tar_dir_neg_large_test, x, sep = "/"),
       recursive = FALSE,
       copy.mode = TRUE,
       overwrite = TRUE
     ))
 }
+
+
+
+# !=======!
+# The same model as above can be applied below.
 
 # --------------------
 # Pneumonia_bacterial
