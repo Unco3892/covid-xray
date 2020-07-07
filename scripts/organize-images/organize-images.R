@@ -8,7 +8,7 @@ test_ratio <- 0.2
 # Create folders for binary and multiclass classifications
 
 tasks <- c("binary", "multiclass")
-subsets <- c("train", "test-balanced", "test-large")
+subsets <- c("train", "test-balanced", "test")
 
 binary_classes <- c("covid", "healthy")
 multiclass_classes <- c("covid", "healthy", "bacterial", "viral")
@@ -47,7 +47,7 @@ covid_test_indices <- sample(
 
 # copy images to test folders
 folders %>%
-  filter(class == "covid" & subset == "test") %>%
+  filter(class == "covid" & subset %in% c("test", "test-balanced")) %>%
   pull(folder) %>% 
   lapply(file.copy, from = covid_images[covid_test_indices])
 
