@@ -53,9 +53,9 @@ All the data used for this project has been placed on this [drive](https://drive
   <tr>
     <td class="tg-i7a5">Train set</td>
     <td class="tg-3zvv">161</td>
-    <td class="tg-3zvv">161</td>
-    <td class="tg-3zvv">161</td>
-    <td class="tg-3zvv">161</td>
+    <td class="tg-3zvv">1267</td>
+    <td class="tg-3zvv">1195</td>
+    <td class="tg-3zvv">2224</td>
   </tr>
   <tr>
     <td class="tg-i7a5">Balanced test set</td>
@@ -67,9 +67,9 @@ All the data used for this project has been placed on this [drive](https://drive
   <tr>
     <td class="tg-i7a5">Test set</td>
     <td class="tg-3zvv">40</td>
-    <td class="tg-3zvv">1583</td>
-    <td class="tg-3zvv">1494</td>
-    <td class="tg-3zvv">2788</td>
+    <td class="tg-3zvv">316</td>
+    <td class="tg-3zvv">298</td>
+    <td class="tg-3zvv">556</td>
   </tr>
 </tbody>
 </table>
