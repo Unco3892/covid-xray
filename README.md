@@ -52,21 +52,21 @@ All the data used for this project has been placed on this [drive](https://drive
 <tbody>
   <tr>
     <td class="tg-i7a5">Train set</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
-    <td class="tg-3zvv">112</td>
+    <td class="tg-3zvv">161</td>
+    <td class="tg-3zvv">161</td>
+    <td class="tg-3zvv">161</td>
+    <td class="tg-3zvv">161</td>
   </tr>
   <tr>
-    <td class="tg-i7a5">Small test set</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
-    <td class="tg-3zvv">28</td>
+    <td class="tg-i7a5">Balanced test set</td>
+    <td class="tg-3zvv">40</td>
+    <td class="tg-3zvv">40</td>
+    <td class="tg-3zvv">40</td>
+    <td class="tg-3zvv">40</td>
   </tr>
   <tr>
-    <td class="tg-i7a5">Large test set</td>
-    <td class="tg-3zvv">28</td>
+    <td class="tg-i7a5">Test set</td>
+    <td class="tg-3zvv">40</td>
     <td class="tg-3zvv">1583</td>
     <td class="tg-3zvv">1494</td>
     <td class="tg-3zvv">2788</td>
