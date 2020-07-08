@@ -12,7 +12,7 @@ The project focuses on identifying healthy individuals from those infected by CO
 
 1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray.git`
 2. Download data files and saved models from [Google Drive](https://drive.google.com/drive/folders/128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h?usp=sharing) and place them in the root folder of the project
-3. The `data` folder already contains a sub-folder "processed" with images processed for training and testing, however, if interested, the user can recreate the same folder from the raw images by running `scripts/organize-images.R`.
+3. The `data` folder already contains a sub-folder "`processed`" with images processed for training and testing, however, if interested, the user can recreate the same folder from the raw images by running `scripts/organize-images.R`.
 
 ## Structure of the repo
 
