@@ -98,3 +98,91 @@ folders %>%
   filter(class == "healthy" & subset == "train") %>%
   pull(folder) %>% 
   lapply(file.copy, from = healthy_images[-healthy_test_indices])
+
+#-------------------------------------------------------------------------------
+# Copy X-rays for viral pneumonia
+
+viral_images <- c(
+  list.files(
+    path = here("data/raw/kermany/chest_xray/test/PNEUMONIA/"),
+    full.names = TRUE,
+    pattern= "VIRUS"
+  ),
+  list.files(
+    path = here("data/raw/kermany/chest_xray/train/PNEUMONIA/"),
+    full.names = TRUE,
+    pattern= "VIRUS"
+  )
+)
+
+viral_test_indices <- sample(
+  x = seq_along(viral_images),
+  size = test_ratio * length(viral_images)
+)
+
+viral_test_balanced_indices <- sample(
+  x = viral_test_indices,
+  size = length(covid_test_indices)
+)
+
+# copy images to test folders
+folders %>%
+  filter(class == "viral" & subset == "test") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = viral_images[viral_test_indices])
+
+# copy images to balanced test folders
+folders %>%
+  filter(class == "viral" & subset == "test-balanced") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = viral_images[viral_test_balanced_indices])
+
+# copy images to train folders
+folders %>%
+  filter(class == "viral" & subset == "train") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = viral_images[-viral_test_indices])
+
+#-------------------------------------------------------------------------------
+# Copy X-rays for bacterial pneumonia
+
+bacterial_images <- c(
+  list.files(
+    path = here("data/raw/kermany/chest_xray/test/PNEUMONIA/"),
+    full.names = TRUE,
+    pattern= "BACTERIA"
+  ),
+  list.files(
+    path = here("data/raw/kermany/chest_xray/train/PNEUMONIA/"),
+    full.names = TRUE,
+    pattern= "BACTERIA"
+  )
+)
+
+bacterial_test_indices <- sample(
+  x = seq_along(bacterial_images),
+  size = test_ratio * length(bacterial_images)
+)
+
+bacterial_test_balanced_indices <- sample(
+  x = viral_test_indices,
+  size = length(covid_test_indices)
+)
+
+# copy images to test folders
+folders %>%
+  filter(class == "bacterial" & subset == "test") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = bacterial_images[bacterial_test_indices])
+
+# copy images to balanced test folders
+folders %>%
+  filter(class == "bacterial" & subset == "test-balanced") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = bacterial_images[bacterial_test_balanced_indices])
+
+# copy images to train folders
+folders %>%
+  filter(class == "bacterial" & subset == "train") %>%
+  pull(folder) %>% 
+  lapply(file.copy, from = bacterial_images[-bacterial_test_indices])
