@@ -45,13 +45,13 @@ covid_test_indices <- sample(
   size = test_ratio * length(covid_images)
 )
 
-# copy images to test folders
+# copy COVID-infected images to test folders
 folders %>%
   filter(class == "covid" & subset %in% c("test", "test-balanced")) %>%
   pull(folder) %>% 
   lapply(file.copy, from = covid_images[covid_test_indices])
 
-# copy images to train folders
+# copy COVID-infected images to train folders
 folders %>%
   filter(class == "covid" & subset == "train") %>%
   pull(folder) %>% 
@@ -81,19 +81,19 @@ healthy_test_balanced_indices <- sample(
   size = length(covid_test_indices)
 )
 
-# copy images to test folders
+# copy healthy images to test folders
 folders %>%
   filter(class == "healthy" & subset == "test") %>%
   pull(folder) %>% 
   lapply(file.copy, from = healthy_images[healthy_test_indices])
 
-# copy images to balanced test folders
+# copy healthy images to balanced test folders
 folders %>%
   filter(class == "healthy" & subset == "test-balanced") %>%
   pull(folder) %>% 
   lapply(file.copy, from = healthy_images[healthy_test_balanced_indices])
 
-# copy images to train folders
+# copy healthy images to train folders
 folders %>%
   filter(class == "healthy" & subset == "train") %>%
   pull(folder) %>% 
@@ -125,19 +125,19 @@ viral_test_balanced_indices <- sample(
   size = length(covid_test_indices)
 )
 
-# copy images to test folders
+# copy viral images (except COVID) to test folders
 folders %>%
   filter(class == "viral" & subset == "test") %>%
   pull(folder) %>% 
   lapply(file.copy, from = viral_images[viral_test_indices])
 
-# copy images to balanced test folders
+# copy viral images (except COVID) to balanced test folders
 folders %>%
   filter(class == "viral" & subset == "test-balanced") %>%
   pull(folder) %>% 
   lapply(file.copy, from = viral_images[viral_test_balanced_indices])
 
-# copy images to train folders
+# copy viral images (except COVID) to train folders
 folders %>%
   filter(class == "viral" & subset == "train") %>%
   pull(folder) %>% 
@@ -169,19 +169,19 @@ bacterial_test_balanced_indices <- sample(
   size = length(covid_test_indices)
 )
 
-# copy images to test folders
+# copy bacterial images to test folders
 folders %>%
   filter(class == "bacterial" & subset == "test") %>%
   pull(folder) %>% 
   lapply(file.copy, from = bacterial_images[bacterial_test_indices])
 
-# copy images to balanced test folders
+# copy bacterial images to balanced test folders
 folders %>%
   filter(class == "bacterial" & subset == "test-balanced") %>%
   pull(folder) %>% 
   lapply(file.copy, from = bacterial_images[bacterial_test_balanced_indices])
 
-# copy images to train folders
+# copy bacterial images to train folders
 folders %>%
   filter(class == "bacterial" & subset == "train") %>%
   pull(folder) %>% 
