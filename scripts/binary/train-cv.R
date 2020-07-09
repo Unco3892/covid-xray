@@ -20,7 +20,7 @@ FLAGS <- flags(
 
 data <- load_data_from_directory(
   # path = here("data/processed/binary/"),
-  path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/"),
+  path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
   target_size = c(244, 244)
 )
 

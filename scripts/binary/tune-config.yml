@@ -1,0 +1,25 @@
+trainingInput:
+  scaleTier: CUSTOM
+  masterType: standard_gpu
+  region: europe-west1
+  hyperparameters:
+    goal: MAXIMIZE
+    hyperparameterMetricTag: val_acc
+    maxParallelTrials: 4
+    maxTrials: 36
+    algorithm: GRID_SEARCH
+    enableTrialEarlyStopping: True
+    params:
+      - parameterName: base
+        type: CATEGORICAL
+        discreteValues: ["vgg16", "densenet201"]
+      - parameterName: n_neurons
+        type: DISCRETE
+        discreteValues: [100, 200, 500]
+      - parameterName: d_rate
+        type: DISCRETE
+        discreteValues: [0, 0.2, 0.5]
+      - parameterName: lr
+        type: DISCRETE
+        discreteValues: [0.00001, 0.0001]
+        
