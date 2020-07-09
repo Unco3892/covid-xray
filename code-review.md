@@ -10,3 +10,4 @@
   should be used instead of `read.csv()`
 * Please do not copy comments 
 * Line 88: `jpeg2` is not the best name (it could be a name of a function)
+* "X-ray" should be written with capital X in all corpus and comments
