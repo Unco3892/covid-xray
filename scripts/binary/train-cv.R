@@ -136,7 +136,10 @@ for (i in seq_along(folds)) {
   # predicted <- (apply(predicted, MARGIN = 1, which.max) - 1) %>% as.factor()
   predicted <- ifelse(predicted > 0.5, 1, 0) %>% as.numeric()
   observed <- valid_generator$y
-  confusion_matrices[[i]] <-  confusionMatrix(factor(predicted), factor(observed))
+  confusion_matrices[[i]] <- confusionMatrix(
+    factor(predicted),
+    factor(observed)
+  )
   
   # sensitivities <- c(sensitivities,
   #                    sensitivity(factor(predicted), factor(observed)))
