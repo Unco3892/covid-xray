@@ -3,7 +3,8 @@ library(cloudml)
 library(caret)
 
 source("utility/load-data-from-directory.R")
-source("utility/accuracy.R")
+# source("utility/accuracy.R")
+source("utility/generate-weights.R")
 
 # Define the hyperparameter for tuning
 #-------------------------------------------------------------------------------
@@ -28,6 +29,7 @@ data$y <- data$y - 1
 
 #-------------------------------------------------------------------------------
 # Create folds
+
 set.seed(1968)
 
 n_folds <- 5
@@ -38,6 +40,11 @@ folds <- createFolds(
   list = TRUE,
   returnTrain = TRUE
 )
+
+#-------------------------------------------------------------------------------
+# Compute weights
+
+classes_weights <- generate_weights(data$y)
 
 #-------------------------------------------------------------------------------
 # Define augmented and non-augmented (for validation set) generators
@@ -114,6 +121,7 @@ for (fold in folds) {
     validation_steps = valid_generator$n / valid_generator$batch_size,
     callbacks = callback_early_stopping(patience = 5,
                                         restore_best_weights = TRUE),
+    class_weight = classes_weights
   )
   
   valid_generator$batch_size <- valid_generator$n 
