@@ -2,7 +2,7 @@ library(keras)
 library(cloudml)
 library(caret)
 
-source("utility/load_data_from_directory.R")
+source("utility/load-data-from-directory.R")
 source("utility/accuracy.R")
 
 # Define the hyperparameter for tuning
@@ -21,7 +21,7 @@ FLAGS <- flags(
 data <- load_data_from_directory(
   # path = here("data/processed/binary/"),
   path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
-  target_size = c(244, 244)
+  target_size = c(224, 224)
 )
 
 data$y <- data$y - 1
