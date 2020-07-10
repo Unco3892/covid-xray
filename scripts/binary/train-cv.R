@@ -59,11 +59,15 @@ generator <- image_data_generator(rescale = 1 / 255)
 
 #-------------------------------------------------------------------------------
 # Define a container for sensitivities and accuracy metrics
-sensitivities <- numeric()
-accuracies <- numeric()
+# sensitivities <- numeric()
+# accuracies <- numeric()
 
-for (fold in folds) {
-  
+confusion_matrices <- list()
+
+for (i in seq_along(folds)) {
+
+  fold <- folds[[i]]
+    
   # Define training and validation sets for the fold
 
   train_generator <- flow_images_from_data(
@@ -132,14 +136,17 @@ for (fold in folds) {
   # predicted <- (apply(predicted, MARGIN = 1, which.max) - 1) %>% as.factor()
   predicted <- ifelse(predicted > 0.5, 1, 0) %>% as.numeric()
   observed <- valid_generator$y
-  # confusionMatrix(factor(predicted), factor(observed))
-  sensitivities <- c(sensitivities,
-                     sensitivity(factor(predicted), factor(observed)))
+  confusion_matrices[[i]] <-  confusionMatrix(factor(predicted), factor(observed))
   
-  accuracies <- c(accuracies, 
-                  accuracy(factor(predicted), factor(observed)))
+  # sensitivities <- c(sensitivities,
+  #                    sensitivity(factor(predicted), factor(observed)))
+  # 
+  # accuracies <- c(accuracies, 
+  #                 accuracy(factor(predicted), factor(observed)))
   
 }
 
-saveRDS(object = sensitivities, file = "sensitivities.rds")
-saveRDS(object = accuracies, file = "accuracies.rds")
+# saveRDS(object = sensitivities, file = "sensitivities.rds")
+# saveRDS(object = accuracies, file = "accuracies.rds")
+
+saveRDS(object = confusion_matrices, file = "confusion_matrices.rds")
