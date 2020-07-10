@@ -11,7 +11,7 @@ The project focuses on identifying healthy individuals from those infected by CO
 ## Instructions: 
 
 1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray.git`
-2. Download data files and saved models from [Google Drive](https://drive.google.com/drive/folders/128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h?usp=sharing) and place them in the root folder of the project
+2. Download data files and saved models from [Google Drive](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng) and place them in the root folder of the project
 3. The `data` folder already contains a sub-folder "`processed`" with images processed for training and testing, however, if interested, the user can recreate the same folder from the raw images by running `scripts/organize-images.R`.
 
 ## Structure of the repo
@@ -36,7 +36,7 @@ The metrics based on test datasets are stored in this folder.
 
 ### Auxiliary files: `.gitignore`, `covid-xray.Rproj`, and `README.md`
 
-All the data used for this project has been placed on this [drive](https://drive.google.com/open?id=128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h). The structure of our datasets are in the following way:
+All the data used for this project has been placed on this [drive](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng). The structure of our datasets are in the following way:
 
 <center>
 <table class="tg" width = 80%>
@@ -84,7 +84,7 @@ Balanced classes of COVID- and both types of pneumonia have been randomly sample
 
 ### Models and code
 Transfer learning with the help of two pre-trained models has been deployed. The first model is VGG16 while the second one is the less parameterized DenseNet201. For both binary and multi-class classification, they have their own [affiliated folders](https://github.com/deep-class/projg05/blob/master/scripts) with scripts for tuning and the final re-training files. The models were tuned on the ai platform of google cloud and can be found in two subfolders and their tuning runs have been placed in the [runs folder.](https://github.com/deep-class/projg05/blob/master/runs)
-The models have also been placed on the [same drive as the datasets](https://drive.google.com/open?id=128hxYxQ8kVEkSkVGikueiqBxWTmDIW2h) and the folder for the model to be placed in the same projg05 main directory.
+The models have also been placed on the [same drive as the datasets](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng) and the folder for the model to be placed in the same projg05 main directory.
 
 ### Report
 The final report can be found in the [report folder](https://github.com/deep-class/projg05/blob/master/report) knitted to Html using the rmarkdown package. Please do note that all the testing runs can be carried out in the same folder.
