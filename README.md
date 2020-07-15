@@ -25,17 +25,6 @@ This folder contains the R Markdown report and its knitted version. The referenc
 This directory has three sub-folder, namely, `import-EDA`, `binary`, and `multiclass`. 
 
 ### `data`
-
-### `runs`
-
-### `models`
-
-### `results`
-
-The metrics based on test datasets are stored in this folder.
-
-### Auxiliary files: `.gitignore`, `covid-xray.Rproj`, and `README.md`
-
 All the data used for this project has been placed on this [drive](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng). The structure of our datasets are in the following way:
 
 <center>
@@ -81,6 +70,16 @@ In the subfolder "data/processed", you can find the cleaned and pre-processed da
 Regarding the pictures that form the COVD+ photos for the training have been retrieved from [chest-x-ray repo](https://github.com/ieee8023/covid-chestxray-dataset) and has been placed in the subfolder "data/covid-chestxray-dataset". Furthermore, please do not that the raw folder contains not only x-rays but also CT-scans as retrieved in its original form from the repo. The photos from this repository were last pulled on the **2nd of July, 2020**.  </p>
 A fourth and a fifth folder have been formed which form a larger test set more to evaluate the model on a realistic scale. Please note that the test set of COVID+ is always 40 photos whether testing on a large or small scale.</p>
 Balanced classes of COVID- and both types of pneumonia have been randomly sampled to match the 161 images of COVID+. Furthermore, the script that does this sampling has been placed [here.](https://github.com/deep-class/projg05/blob/master/scripts/import_EDA/photo-organization.R)
+
+### `runs`
+
+### `models`
+
+### `results`
+
+The metrics based on test datasets are stored in this folder.
+
+### Auxiliary files: `.gitignore`, `covid-xray.Rproj`, and `README.md`
 
 ### Models and code
 Transfer learning with the help of two pre-trained models has been deployed. The first model is VGG16 while the second one is the less parameterized DenseNet201. For both binary and multi-class classification, they have their own [affiliated folders](https://github.com/deep-class/projg05/blob/master/scripts) with scripts for tuning and the final re-training files. The models were tuned on the ai platform of google cloud and can be found in two subfolders and their tuning runs have been placed in the [runs folder.](https://github.com/deep-class/projg05/blob/master/runs)
