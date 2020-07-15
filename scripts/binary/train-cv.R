@@ -4,7 +4,6 @@ library(caret)
 library(e1071)
 
 source("utility/load-data-from-directory.R")
-# source("utility/accuracy.R")
 source("utility/generate-weights.R")
 
 # Define the hyperparameter for tuning
@@ -21,7 +20,6 @@ FLAGS <- flags(
 # Read data and modify the outcome variable to use sigmoid activation function
 
 data <- load_data_from_directory(
-  # path = here("data/processed/binary/"),
   path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
   target_size = c(224, 224)
 )
@@ -60,8 +58,6 @@ generator <- image_data_generator(rescale = 1 / 255)
 
 #-------------------------------------------------------------------------------
 # Define a container for sensitivities and accuracy metrics
-# sensitivities <- numeric()
-# accuracies <- numeric()
 
 confusion_matrices <- list()
 
@@ -134,7 +130,6 @@ for (i in seq_along(folds)) {
   
   predicted <- model %>% 
     predict_generator(generator = valid_generator, steps = 1)
-  # predicted <- (apply(predicted, MARGIN = 1, which.max) - 1) %>% as.factor()
   predicted <- ifelse(predicted > 0.5, 1, 0) %>% as.numeric()
   observed <- valid_generator$y
   confusion_matrices[[i]] <- confusionMatrix(
@@ -142,15 +137,6 @@ for (i in seq_along(folds)) {
     factor(observed)
   )
   
-  # sensitivities <- c(sensitivities,
-  #                    sensitivity(factor(predicted), factor(observed)))
-  # 
-  # accuracies <- c(accuracies, 
-  #                 accuracy(factor(predicted), factor(observed)))
-  
 }
-
-# saveRDS(object = sensitivities, file = "sensitivities.rds")
-# saveRDS(object = accuracies, file = "accuracies.rds")
 
 saveRDS(object = confusion_matrices, file = "confusion_matrices.rds")
