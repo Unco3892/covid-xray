@@ -9,7 +9,7 @@ library(magrittr)
 #' @param path A character vector of length one, a path to the image file.
 #' @param target_size An integer vector of length two, `(height, width)`.
 #' 
-#' @return An array of three dimensions: `(height, width, channel)`
+#' @return An array of three dimensions: `(height, width, channel)`.
 load_image <- function(path, target_size) {
     image_load(path = path, target_size = target_size) %>% image_to_array()
 }
@@ -23,7 +23,7 @@ load_image <- function(path, target_size) {
 #' files. 
 #' @param target_size An integer vector of length two, `(height, width)`.
 #' 
-#' @return An array of four dimensions: `(sample, height, width, channel)`
+#' @return An array of four dimensions: `(sample, height, width, channel)`.
 load_directory <- function(path, target_size) {
     files <- list.files(path = path, full.names = TRUE)
     array_list <- lapply(files, load_image, target_size = target_size)

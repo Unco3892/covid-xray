@@ -1,6 +1,7 @@
 library(keras)
 library(cloudml)
 library(caret)
+library(e1071)
 
 source("utility/load-data-from-directory.R")
 # source("utility/accuracy.R")
