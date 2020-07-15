@@ -22,4 +22,10 @@ trainingInput:
       - parameterName: lr
         type: DISCRETE
         discreteValues: [0.00001, 0.0001]
+      - parameterName: batch_size
+        type: DISCRETE
+        discreteValues: [16, 512]
+      - parameterName: unfreeze_layer
+        type: CATEGORICAL
+        discreteValues: ["block5_conv1", "block4_conv1"]
         

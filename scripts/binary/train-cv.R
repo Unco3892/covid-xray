@@ -13,7 +13,9 @@ FLAGS <- flags(
   flag_string("base", "vgg16"),
   flag_numeric("n_neurons", 100),
   flag_numeric("d_rate", 0.2),
-  flag_numeric("lr", 0.0001)
+  flag_numeric("batch_size", 512),
+  flag_numeric("lr", 0.0001),
+  flag_string("unfreeze_layer", "block5_conv1")
 )
 
 #-------------------------------------------------------------------------------
@@ -71,14 +73,14 @@ for (i in seq_along(folds)) {
     x = data$x[fold, , ,],
     y = data$y[fold],
     generator = augmented_generator,
-    batch_size = 32
+    batch_size = FLAGS$batch_size
   )
   
   valid_generator <- flow_images_from_data(
     x = data$x[-fold, , ,],
     y = data$y[-fold],
     generator = generator,
-    batch_size = 32
+    batch_size = FLAGS$batch_size
   )
   
   # Build the model
@@ -107,6 +109,25 @@ for (i in seq_along(folds)) {
     layer_dense(units = FLAGS$n_neurons, activation = "relu") %>%
     layer_dropout(rate = FLAGS$d_rate) %>%
     layer_dense(units = 1, activation = "sigmoid")
+  
+  model %>% compile(
+    optimizer = optimizer_rmsprop(lr = FLAGS$lr),
+    loss = loss_binary_crossentropy,
+    metric = metric_binary_accuracy
+  )
+  
+  model %>% fit_generator(
+    generator = train_generator,
+    steps_per_epoch = train_generator$n / train_generator$batch_size,
+    epochs = 30,
+    validation_data = valid_generator,
+    validation_steps = valid_generator$n / valid_generator$batch_size,
+    callbacks = callback_early_stopping(patience = 5,
+                                        restore_best_weights = TRUE),
+    class_weight = classes_weights
+  )
+  
+  unfreeze_weights(model_base, from = FLAGS$unfreeze_layer)
   
   model %>% compile(
     optimizer = optimizer_rmsprop(lr = FLAGS$lr),
