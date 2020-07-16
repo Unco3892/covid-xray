@@ -32,3 +32,8 @@ sensitivities <- readRDS(
 accuracies <- readRDS(
   file = here("runs/cloudml_2020_07_10_085717825/accuracies.rds")
 )
+
+matrices <- readRDS(
+  file = here("scripts/runs/cloudml_2020_07_16_124927877/confusion_matrices.rds")
+)
+
