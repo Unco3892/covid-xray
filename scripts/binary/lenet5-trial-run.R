@@ -19,7 +19,7 @@ FLAGS <- flags(
 
 data <- load_data_from_directory(
   path = here("data/processed/binary/train"),
-  # path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
+  #path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
   target_size = c(224, 224)
 )
 
@@ -86,9 +86,9 @@ for (i in seq_along(folds)) {
   # LENET5
   model <- keras_model_sequential() %>%
     layer_conv_2d(filters = 6, kernel_size = c(5, 5),
-                  strides = 1, padding = "same", # Note that we have used padding although it was not requested in the exercise but it was mentioned in the slides so it has been implemented.
+                  strides = 1, padding = "same", 
                   activation = "relu",
-                  input_shape = c(100, 100, 3)) %>% 
+                  input_shape = c(224, 224, 3)) %>% 
     layer_average_pooling_2d(pool_size = c(2, 2), strides = 2) %>% 
     layer_conv_2d(filters = 16, kernel_size = c(5, 5),
                   strides = 1, activation = "relu") %>% 
@@ -97,24 +97,25 @@ for (i in seq_along(folds)) {
                   strides = 1, activation = "relu") %>% 
     layer_flatten() %>%
     layer_dense(units = 84, activation = "relu") %>% 
-    layer_dense(units = 8, activation = "softmax")
+    layer_dense(units = 1, activation = "sigmoid")
   
   # Compile with the flags
   model %>% compile(
-    loss = "categorical_crossentropy",
+    loss = loss_binary_crossentropy,
     optimizer = optimizer_rmsprop(0.0001),
-    metric = "accuracy"
+    metric = metric_binary_accuracy
   )    
   
   # fit with the flags
   model %>% fit_generator(
     generator = train_generator, 
     steps_per_epoch = train_generator$n / train_generator$batch_size,
-    epochs = 100,
+    epochs = 1,
     validation_data = valid_generator,
     validation_steps = valid_generator$n / valid_generator$batch_size,
     callbacks = callback_early_stopping(patience = 5,
-                                        restore_best_weights = TRUE)
+                                        restore_best_weights = TRUE), 
+    class_weight = classes_weights
   )   
   
   # -----------  
@@ -122,8 +123,8 @@ for (i in seq_along(folds)) {
   valid_generator$shuffle <- FALSE
   
   predicted <- model %>% 
-    predict_generator(generator = valid_generator, steps = 1)
-  # predicted <- (apply(predicted, MARGIN = 1, which.max) - 1) %>% as.factor()
+  predict_generator(generator = valid_generator, steps = 1)
+  #predicted <- (apply(predicted, MARGIN = 1, which.max) - 1) %>% as.factor()
   predicted <- ifelse(predicted > 0.5, 1, 0) %>% as.numeric()
   observed <- valid_generator$y
   confusion_matrices[[i]] <-  confusionMatrix(factor(predicted), factor(observed))
