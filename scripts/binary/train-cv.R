@@ -15,7 +15,8 @@ FLAGS <- flags(
   flag_numeric("d_rate", 0.2),
   flag_numeric("batch_size", 16),
   flag_numeric("lr", 0.00001),
-  flag_string("unfreeze_layer", "block5_conv1")
+  flag_string("unfreeze_layer", "block5_conv1"),
+  flag_boolean("use_weights", TRUE)
 )
 
 #-------------------------------------------------------------------------------
@@ -143,7 +144,7 @@ for (i in seq_along(folds)) {
     validation_steps = valid_generator$n / valid_generator$batch_size,
     callbacks = callback_early_stopping(patience = 5,
                                         restore_best_weights = TRUE),
-    class_weight = classes_weights
+    class_weight = FLAGS$use_weights
   )
   
   valid_generator$batch_size <- valid_generator$n 
