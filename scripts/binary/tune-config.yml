@@ -30,6 +30,6 @@ trainingInput:
         discreteValues: ["block5_conv1", "block4_conv1"]
       - parameterName: use_weights
         type: CATEGORICAL
-        discreteValues: ["TRUE"", "FALSE""]
+        discreteValues: ["TRUE", "FALSE"]
       
         
