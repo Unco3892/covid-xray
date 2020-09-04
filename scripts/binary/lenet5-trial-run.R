@@ -1,6 +1,7 @@
 library(keras)
 library(cloudml)
 library(caret)
+library(e1071)
 library(here)
 
 source(here::here("scripts/utility/load-data-from-directory.R"))
@@ -10,16 +11,18 @@ source(here::here("scripts/utility/generate-weights.R"))
 # Define the hyperparameter for tuning
 #-------------------------------------------------------------------------------
 
-FLAGS <- flags(
-  flag_numeric("wetights", 1)
+FLAGS <- flags( 
+  flag_numeric("batch_size", 16),
+  flag_numeric("lr", 0.00001),
+  flag_boolean("use_weights", TRUE)
 )
 
 #-------------------------------------------------------------------------------
 # Read data and modify the outcome variable to use sigmoid activation function
 
 data <- load_data_from_directory(
-  path = here("data/processed/binary/train"),
-  #path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
+  #path = here("data/processed/binary/train"),
+  path = gs_data_dir_local("gs://covid-xray-deep/data/processed/binary/train/"),
   target_size = c(224, 224)
 )
 
@@ -72,14 +75,14 @@ for (i in seq_along(folds)) {
     x = data$x[fold, , ,],
     y = data$y[fold],
     generator = augmented_generator,
-    batch_size = 32
+    batch_size = FLAGS$batch_size
   )
   
   valid_generator <- flow_images_from_data(
     x = data$x[-fold, , ,],
     y = data$y[-fold],
     generator = generator,
-    batch_size = 32
+    batch_size = FLAGS$batch_size
   )
   
   # -----------
@@ -102,21 +105,31 @@ for (i in seq_along(folds)) {
   # Compile with the flags
   model %>% compile(
     loss = loss_binary_crossentropy,
-    optimizer = optimizer_rmsprop(0.0001),
+    optimizer = optimizer_rmsprop(lr = FLAGS$lr),
     metric = metric_binary_accuracy
   )    
   
-  # fit with the flags
+# fit with the flags
+if(FLAGS$use_weights){
+model %>% fit_generator(
+  generator = train_generator, 
+  steps_per_epoch = train_generator$n / train_generator$batch_size,
+  epochs = 50,
+  validation_data = valid_generator,
+  validation_steps = valid_generator$n / valid_generator$batch_size,
+  callbacks = callback_early_stopping(patience = 5,
+                                      restore_best_weights = TRUE), 
+  class_weight = classes_weights)
+}else{
   model %>% fit_generator(
     generator = train_generator, 
     steps_per_epoch = train_generator$n / train_generator$batch_size,
-    epochs = 1,
+    epochs = 50,
     validation_data = valid_generator,
     validation_steps = valid_generator$n / valid_generator$batch_size,
     callbacks = callback_early_stopping(patience = 5,
-                                        restore_best_weights = TRUE), 
-    class_weight = classes_weights
-  )   
+                                        restore_best_weights = TRUE))
+    }
   
   # -----------  
   valid_generator$batch_size <- valid_generator$n 
@@ -141,3 +154,5 @@ for (i in seq_along(folds)) {
 # saveRDS(object = accuracies, file = "accuracies.rds")
 
 saveRDS(object = confusion_matrices, file = "confusion_matrices.rds")
+
+

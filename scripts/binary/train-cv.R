@@ -116,17 +116,29 @@ for (i in seq_along(folds)) {
     loss = loss_binary_crossentropy,
     metric = metric_binary_accuracy
   )
-  
-  model %>% fit_generator(
-    generator = train_generator,
-    steps_per_epoch = train_generator$n / train_generator$batch_size,
-    epochs = 50,
-    validation_data = valid_generator,
-    validation_steps = valid_generator$n / valid_generator$batch_size,
-    callbacks = callback_early_stopping(patience = 5,
-                                        restore_best_weights = TRUE),
-    class_weight = classes_weights
-  )
+ 
+  # fit with the flags
+  if(FLAGS$use_weights){
+    model %>% fit_generator(
+      generator = train_generator, 
+      steps_per_epoch = train_generator$n / train_generator$batch_size,
+      epochs = 1,
+      validation_data = valid_generator,
+      validation_steps = valid_generator$n / valid_generator$batch_size,
+      callbacks = callback_early_stopping(patience = 5,
+                                          restore_best_weights = TRUE), 
+      class_weight = classes_weights
+    )
+  }else{
+    model %>% fit_generator(
+      generator = train_generator, 
+      steps_per_epoch = train_generator$n / train_generator$batch_size,
+      epochs = 1,
+      validation_data = valid_generator,
+      validation_steps = valid_generator$n / valid_generator$batch_size,
+      callbacks = callback_early_stopping(patience = 5,
+                                          restore_best_weights = TRUE)
+  } 
   
   unfreeze_weights(conv_base, from = FLAGS$unfreeze_layer)
   
@@ -136,16 +148,6 @@ for (i in seq_along(folds)) {
     metric = metric_binary_accuracy
   )
   
-  model %>% fit_generator(
-    generator = train_generator,
-    steps_per_epoch = train_generator$n / train_generator$batch_size,
-    epochs = 50,
-    validation_data = valid_generator,
-    validation_steps = valid_generator$n / valid_generator$batch_size,
-    callbacks = callback_early_stopping(patience = 5,
-                                        restore_best_weights = TRUE),
-    class_weight = FLAGS$use_weights
-  )
   
   valid_generator$batch_size <- valid_generator$n 
   valid_generator$shuffle <- FALSE
