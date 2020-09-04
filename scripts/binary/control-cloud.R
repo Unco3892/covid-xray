@@ -21,6 +21,9 @@ setwd(here("scripts/"))
 cloudml_train(file = here("scripts/binary/train-cv.R"),
               master_type = "standard_p100", region = "europe-west1")
 
+cloudml_train(file = here("scripts/binary/lenet5-trial-run.R"),
+              master_type = "standard_p100", region = "europe-west1")
+
 setwd(here())
 
 job_collect()
