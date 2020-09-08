@@ -20,7 +20,6 @@ The project focuses on identifying healthy individuals from those infected by CO
 This folder contains the R Markdown report and its knitted version. The references are listed in `ref.bibtex`. If you would like to re-knit the report, please make sure that you have downloaded `/models` and `/data` from Google Drive.
 
 ### `scripts`
-The folder structure
 ```
 scripts/
 |-  binary
@@ -51,7 +50,6 @@ Furthermore, the script that does this sampling has been placed [here.](https://
 
 
 ### `data`
-The folder structure
 ```
 data/
 |-  raw
