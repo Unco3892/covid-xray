@@ -46,8 +46,6 @@ scripts/
 |   |-   |-  ...
 |   |-   |-   |-  ...
 ```
-Furthermore, the script that does this sampling has been placed [here.](https://github.com/deep-class/projg05/blob/master/scripts/import_EDA/photo-organization.R)
-
 
 ### `data`
 ```
