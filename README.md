@@ -12,7 +12,6 @@ The project focuses on identifying healthy individuals from those infected by CO
 
 1. Clone the repo by `git clone git@github.com:Unco3892/covid-xray.git`
 2. Download data files and saved models from [Google Drive](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng) and place them in the root folder of the project
-3. The `data` folder already contains a sub-folder "`processed`" with images processed for training and testing, however, if interested, the user can recreate the same folder from the raw images by running `scripts/organize-images.R`.
 
 ## Structure of the repo
 
@@ -24,9 +23,35 @@ This folder contains the R Markdown report and its knitted version. The referenc
 
 This directory has three sub-folder, namely, `import-EDA`, `binary`, and `multiclass`. 
 
-### `data`
-All the data used for this project has been placed on this [drive](https://drive.google.com/drive/u/1/folders/12RuvBZj2lsCYb5RKMfBMnqNG1O5ZCvng). The structure of our datasets are in the following way:
+Furthermore, the script that does this sampling has been placed [here.](https://github.com/deep-class/projg05/blob/master/scripts/import_EDA/photo-organization.R)
 
+
+### `data`
+The folder structure:
+`data/`
+|-  `processed` 
+|   |-  `binary`
+|   |-   |-  `test`
+|   |-   |-   |-  `healthy`
+|   |-   |-   |-  `covid`
+|   |-   |-  `test-balanced`
+|   |-   |-   |-  ...
+|   |-   |-  `train`
+|   |-   |-   |-  ...
+|   |-  `multiclass`
+|   |-   |-   |-  `healthy`
+|   |-   |-   |-  `covid`
+|   |-   |-   |-  `bacterial`
+|   |-   |-   |-  `viral`
+|   |-   |-  `test-balanced`
+|   |-   |-   |-  ...
+|   |-   |-  `train`
+|   |-   |-   |-  ...
+|-  `raw`
+|   |-  `covid-chestxray-dataset`: [chest-x-ray repo](https://github.com/ieee8023/covid-chestxray-dataset)
+|   |-  `kermany` : [Link of the dataset](https://data.mendeley.com/datasets/rscbjbr9sj/3)
+
+The `/data` used was distributed in the following way:
 <center>
 <table class="tg" width = 80%>
 <thead>
@@ -66,11 +91,9 @@ All the data used for this project has been placed on this [drive](https://drive
 &nbsp;
 &nbsp;
 
-In the subfolder "data/processed", you can find the cleaned and pre-processed dataset which has been used for training the models as well as two test sets, one balanced and one containing all the photos that were not used in the training. Furthermore, the data that was extracted from the sources are found in a folder "data/raw/kermany" which consists of chest-x-ray scans of patients from 2018  who were healthy (forming our COVID-) or had viral or bacterial types of pneumonia. The source of this dataset can be found on the [dataset's website](https://data.mendeley.com/datasets/rscbjbr9sj/3). </p>
-Regarding the pictures that form the COVD+ photos for the training have been retrieved from [chest-x-ray repo](https://github.com/ieee8023/covid-chestxray-dataset) and has been placed in the subfolder "data/covid-chestxray-dataset". Furthermore, please do not that the raw folder contains not only x-rays but also CT-scans as retrieved in its original form from the repo. The photos from this repository were last pulled on the **2nd of July, 2020**.  </p>
-A fourth and a fifth folder have been formed which form a larger test set more to evaluate the model on a realistic scale. Please note that the test set of COVID+ is always 40 photos whether testing on a large or small scale.</p>
-Balanced classes of COVID- and both types of pneumonia have been randomly sampled to match the 161 images of COVID+. Furthermore, the script that does this sampling has been placed [here.](https://github.com/deep-class/projg05/blob/master/scripts/import_EDA/photo-organization.R)
-
+In the subfolder `/data/processed`, you can find the cleaned and pre-processed dataset which has been used for training the models as well as two test sets, one balanced and one containing all the photos that were not used in the training. Furthermore, the data that was extracted from the sources are found in a folder 'data/raw/kermany'of healthy . </p>
+The COVD+ photos (only x-rays) for the training have been retrieved from [chest-x-ray repo](https://github.com/ieee8023/covid-chestxray-dataset) and has been placed in the subfolder `/data/covid-chestxray-dataset`.The photos from this repository were last pulled on the **2nd of July, 2020**.  </p>
+For balancing the classes (161 images) randomly sampling has been doing. 
 ### `runs`
 
 ### `models`
