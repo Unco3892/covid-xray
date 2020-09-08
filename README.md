@@ -23,16 +23,16 @@ This folder contains the R Markdown report and its knitted version. The referenc
 ```
 scripts/
 |-  binary
-|   |-  control-cloud.R 
-|   |-  lenet5-trial-run.R
-|   |-  train-cv.R 
-|   |-  tune-confign.yml
+|   |-  control-cloud.R --> control file for carrying out the training on gcloud
+|   |-  lenet5-trial-run.R --> lenet5 model used in training
+|   |-  train-cv.R --> main training file for the binary model
+|   |-  tune-confign.yml --> Hyperaprameters sent for tuning on gcloud
 |-  utility
-|   |-  accuracy.R --> Calculating the accuracy given the predicted and observed values 
+|   |-  accuracy.R --> calculating the accuracy given the predicted and observed values 
 |   |-  eda.R --> Exploration of the covid-chestxray-dataset
-|   |-  generate-weights.R --> Generate weights based on the outcome variable 
-|   |-  load-data-from-directory.R --> Loading the inputs from the images of the folders 
-|   |-  organize-images.R --> Creating directories, sampling and moving the data to go from the data/raw to data/processed
+|   |-  generate-weights.R --> generating weights based on the outcome variable 
+|   |-  load-data-from-directory.R --> generate input and output from the folder structure and images
+|   |-  organize-images.R --> creating directories, sampling and moving the data to go from the data/raw to data/processed
 |-  depricated
 |   |-  binary
 |   |-   |-  densenet
@@ -51,8 +51,8 @@ scripts/
 ```
 data/
 |-  raw
-|   |-  covid-chestxray-dataset --> Images of covid class last pulled on the 2nd of July, 2020 from https://github.com/ieee8023/covid-chestxray-dataset
-|   |-  kermany --> Images of the healthy, bacterial and viral classes extracted from https://data.mendeley.com/datasets/rscbjbr9sj/3
+|   |-  covid-chestxray-dataset --> images of covid class last pulled on the 2nd of July, 2020 from https://github.com/ieee8023/covid-chestxray-dataset
+|   |-  kermany --> images of the healthy, bacterial and viral classes extracted from https://data.mendeley.com/datasets/rscbjbr9sj/3
 |-  processed --> organized images using scripts/utility/organize-images.R
 |   |-  binary
 |   |-   |-  test
