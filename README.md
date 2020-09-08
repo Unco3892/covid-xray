@@ -117,8 +117,6 @@ The `/data` used was distributed in the following way:
 &nbsp;
 &nbsp;
 
-For balancing the classes (161 images) randomly sampling has been doing. 
-  </p>
 ### `runs`
 
 ### `models`
