@@ -29,28 +29,28 @@ Furthermore, the script that does this sampling has been placed [here.](https://
 ### `data`
 The folder structure:
 ```
-`data/`
-|-  `processed` 
-|   |-  `binary`
-|   |-   |-  `test`
-|   |-   |-   |-  `healthy`
-|   |-   |-   |-  `covid`
-|   |-   |-  `test-balanced`
-|   |-   |-   |-  ...
-|   |-   |-  `train`
-|   |-   |-   |-  ...
-|   |-  `multiclass`
-|   |-   |-   |-  `healthy`
-|   |-   |-   |-  `covid`
-|   |-   |-   |-  `bacterial`
-|   |-   |-   |-  `viral`
-|   |-   |-  `test-balanced`
-|   |-   |-   |-  ...
-|   |-   |-  `train`
-|   |-   |-   |-  ...
+data/
 |-  `raw`
 |   |-  `covid-chestxray-dataset`: [chest-x-ray repo](https://github.com/ieee8023/covid-chestxray-dataset)
 |   |-  `kermany` : [Link of the dataset](https://data.mendeley.com/datasets/rscbjbr9sj/3)
+|-  processed
+|   |-  binary
+|   |-   |-  test
+|   |-   |-   |-  healthy
+|   |-   |-   |-  covid
+|   |-   |-  test-balanced
+|   |-   |-   |-  ...
+|   |-   |-  train
+|   |-   |-   |-  ...
+|   |-  multiclass
+|   |-   |-   |-  healthy
+|   |-   |-   |-  covid
+|   |-   |-   |-  bacterial
+|   |-   |-   |-  viral
+|   |-   |-  `test-balanced`
+|   |-   |-   |-  ...
+|   |-   |-  `train`
+|   |-   |-   |-  ...
 ```
 
 The `/data` used was distributed in the following way:
