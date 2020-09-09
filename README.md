@@ -1,8 +1,9 @@
 # Identifying COVID-19 Patients by X-rays
-# Ilia Azizi, Alexandre Schroeter
-
+# [Ilia Azizi](https://iliaazizi.netlify.app/), [Alexandre Schroeter](https://github.com/schroeti), [Iegor Rudnytski](https://irudnyts.github.io/)
 
 This repo contains all necessary files to reproduce results that can be found in our post on [Towards Data Science](XXX).
+
+This repo is currently under development!
 
 ## Summary
 
