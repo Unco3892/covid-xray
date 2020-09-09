@@ -30,13 +30,13 @@ load_directory <- function(path, target_size) {
     abind(array_list, along = 0)
 }
 
-#' Generate imput and output from the folder structure and images.
+#' Generate input and output from the folder structure and images.
 #' 
 #' @details All files in `path` directory should be images with PNG, JPG, BMP,
 #' PPM, or TIF extensions.
 #' 
 #' @param path A character vector of length one, a path to the folder with image
-#' files. It should contain one subdirectory per class.
+#' files. It should contain one sub-directory per class.
 #' @param target_size An integer vector of length two, `(height, width)`.
 #' 
 #' @return A list of two elements: 
